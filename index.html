@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 1st Anniversary ya!! ❤️</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Lato:wght@300;400;700&family=Sacramento&display=swap">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .section {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 20px;
+            position: relative;
+        }
+
+        /* Landing Section */
+        #landing {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .landing-content h1 {
+            font-size: 4em;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .landing-content .subtitle {
+            font-size: 1.5em;
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeIn 1s ease 0.5s forwards;
+        }
+
+        .heart-animation {
+            font-size: 100px;
+            animation: heartbeat 1.5s infinite;
+            margin: 30px 0;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            font-size: 2em;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes heartbeat {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            25% {
+                transform: scale(1.2);
+            }
+
+            50% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Timeline Section */
+        #timeline {
+            background: linear-gradient(to bottom, #1a1a2e, #16213e);
+            flex-direction: column;
+        }
+
+        .timeline-container {
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .timeline-title {
+            text-align: center;
+            font-size: 3em;
+            margin-bottom: 60px;
+            color: #ff6b6b;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 60px;
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.6s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+            transform: translateX(50px);
+        }
+
+        .timeline-date {
+            flex: 0 0 150px;
+            font-size: 1.2em;
+            color: #ff6b6b;
+            font-weight: bold;
+            padding: 20px;
+        }
+
+        .timeline-content {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .timeline-content h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #ffd93d;
+        }
+
+        .timeline-content p {
+            line-height: 1.6;
+            color: #ddd;
+        }
+
+        /* Gallery Section */
+        #gallery {
+            background: linear-gradient(to bottom, #16213e, #0f3460);
+            flex-direction: column;
+        }
+
+        .gallery-title {
+            text-align: center;
+            font-size: 3em;
+            margin-bottom: 60px;
+            color: #ff6b6b;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: 250px;
+            gap: 20px;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:nth-child(1) {
+            grid-row: span 2;
+        }
+
+        .gallery-item:nth-child(2) {
+            grid-row: span 2;
+        }
+
+        .gallery-item:nth-child(3) {
+            grid-row: span 2;
+        }
+
+        .gallery-item:nth-child(4) {
+            grid-row: span 2;
+        }
+
+        
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3em;
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        /* Reasons Section */
+        #reasons {
+            background: linear-gradient(to bottom, #0f3460, #533483);
+            flex-direction: column;
+        }
+
+        .reasons-title {
+            text-align: center;
+            font-size: 3em;
+            margin-bottom: 60px;
+            color: #ff6b6b;
+        }
+
+        .reasons-container {
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .reason-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+            border-left: 5px solid #ff6b6b;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .reason-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reason-number {
+            font-size: 2em;
+            color: #ffd93d;
+            margin-bottom: 10px;
+        }
+
+        .reason-text {
+            font-size: 1.2em;
+            line-height: 1.6;
+            color: #ddd;
+        }
+
+        /* Message Section */
+        #message {
+            background: linear-gradient(135deg, #533483, #667eea);
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .message-box {
+            max-width: 700px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 50px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .message-box h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: #ffd93d;
+        }
+
+        .message-text {
+            font-size: 1.3em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .signature {
+            font-size: 1.5em;
+            margin-top: 40px;
+            color: #ff6b6b;
+            font-family: 'Brush Script MT', cursive;
+        }
+
+        .btn-special {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-special:hover {
+            transform: scale(1.1);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            background: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 2em;
+            color: #000;
+            cursor: pointer;
+        }
+
+        /* Floating particles */
+        .particle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        @media (max-width: 768px) {
+            .landing-content h1 {
+                font-size: 2.5em;
+            }
+
+            .timeline-item {
+                flex-direction: column !important;
+            }
+
+            .timeline-date {
+                flex: 1;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-auto-rows: 200px;
+            }
+
+            .gallery-item:nth-child(3) {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Landing Section -->
+    <section id="landing" class="section">
+        <div class="landing-content">
+            <h1>Selamat ulang tahun buat kita ya sayanggkuu!!</h1>
+            <div class="heart-animation">❤️</div>
+            <p class="subtitle">Kerasa ngga setahunnya ama aku?</p>
+            <div class="scroll-indicator" onclick="scrollToSection('timeline')">↓</div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section id="timeline" class="section">
+        <div class="timeline-container">
+            <h2 class="timeline-title">Seitik perjalanan kita selama setahun</h2>
+
+            <div class="timeline-item">
+                <div class="timeline-date">5 Januari 2025</div>
+                <div class="timeline-content">
+                    <h3>🌟 Inget ngga sih kita pertama kali ketemu?</h3>
+                    <p>Kamu pake baju warna warni, apa ya, pokoknya ada warna oren, item, terus apalagi gitu. Aku inget
+                        banget
+                        kamu masih aku jemput di rumahnya si dontol itu, padahal semalam kan kita sempet telfonan, yang
+                        aku keluar sendirian
+                        malem-malem, I asked u like "kenapa ngga aku jemput dirumah aja?" u said "jangan dulu aku masih
+                        takut sama respon bunda kaya gimana"
+                        wkwkwkwk, hadeuhh reree rereee. Bisa dibilang waktu itu I threat u well la yaa selayaknya orang
+                        pacaran aja wkwkwkwk
+                        padahal kamu belum pernah yang ngerasain pacaran beneran hahahaha, but that's okay I'm still
+                        threat u well sampe sekarang,
+                        Puji Tuhannya sekarang udah ngga se-kaku dulu yeaa wkwkwk, proud of uu!!!!
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">6 Januari 2025</div>
+                <div class="timeline-content">
+                    <h3>🎬 Second Date</h3>
+                    <p>Ini gila sih, kamu ada rencana olahraga sama gracia, gila kaya pacaran ala-ala anak SMP, batinku
+                        "yailah, pacarnya disamperin kek, minimal ga jauh2 an kek, giluyy ternyata gini pacaran ama
+                        orang
+                        yang ga pernah bener2 pacaran sebelumnya?" so awkward, gasukaa sebenernya waktu ituu, tapi aku
+                        memaklumi
+                        lah yaa, karna baru juga beberapa kali ketemu
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">1-2 Juli 2025</div>
+                <div class="timeline-content">
+                    <h3>🏖️ Liburan Semester 2</h3>
+                    <p>Wahh, disini aing mah heppi banget yakk, first time aku ketemu sama keluarga besarmu, Ayah,
+                        bunda, Om Ferry, Om Rino, Ian, Ega,
+                        sisil, mikael, trus kalo ga salah waktu itu ada nuel juga deh yak. First time juga aku main
+                        basket bareng ega, first time juga
+                        ngobrol sama ian + ega, first time main badminton sama ian, I think like, that was crazy bro,
+                        dan first time juga diajak makan-makan
+                        di rumah, pokonya mah aing banyak saltingnya :)
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">Agustus - Desember 2025</div>
+                <div class="timeline-content">
+                    <h3> Well, karena kita LDR jadi...</h3>
+                    <p>Jadi yaa kita jarang ketemuan dungs, kita lebih benyak chat an teruss, vc an, tapi like I said,
+                        semua ada plus minusnya, plusnya yaa aku jadi ga banyak keluarin duit buat ketemu, bensin juga
+                        masih aman,
+                        terus hemat juga yekann, but minusnya yaa banyak juga yakk, ga pernah ketemu, kalo kangen ya
+                        cuma bisa lewat hp doang,
+                        kalo kamu butuh bantuan, apalagi banyak banget masalahmu selama kita LDR an kan, aku gabisa
+                        apa-apa di Malang,
+                        bantuin kamu yaa engga dan yaa aku agak nggaa terima aja sama diriku sendiri, kaya kenapa ya kok
+                        LDR???
+                        kalo ada masalah kaya gini kan aku gabisa bantuin secara langsung, kaya aku tuh waktu kamu ada
+                        masalah tu, pengen banget hadir,
+                        pengen banget bantuin kamu, ngelidungin kamu, tapi apalah daya aku di Malang. Tau sih... LDR
+                        memang susah yak,
+                        hadehh, semoga kamu kuat selalu buat LDR yaa, semoga cita-cita kita bisa terwujud di tahun 2026,
+                        okeyy??
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">Desember 2025</div>
+                <div class="timeline-content">
+                    <h3>💝 Dah bareng setahun nih acikiwirr~</h3>
+                    <p>And finally!! we're here, udah setahun kita lewatin, susah seneng, kamu nangis2, aku happy2, kamu
+                        ovt aku jailin yekann,
+                        hahaha. Penutupan tahun ini ditutup dengan hal yang paling memorable, yap betul, ketemu keluarga
+                        besarmu lagi, itu sangat-sangat memorable poll
+                        apalagi kegiatan yang kita lakuin bener2 sama, akupun pake baju yang sama, but different vibes
+                        of course, thank uu yaaa, buat penutupan akhir tahun ini.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section">
+        <div style="max-width: 1200px; width: 100%;">
+            <h2 class="gallery-title">Our Memories</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item" onclick="openModal(1)">
+                    <a href="https://ibb.co.com/bMV2Qnct"><img src="https://i.ibb.co.com/ksT95FNZ/1.jpg" alt="1" style="width:100%;height:100%;object-fit:contain;"></a>
+                </div>
+                <div class="gallery-item" onclick="openModal(2)">
+                    <a href="https://ibb.co.com/JFqydTjR"><img src="https://i.ibb.co.com/84bdBwgD/2.jpg" alt="2" style="width:100%;height:100%;object-fit:contain;"></a>
+                </div>
+                <div class="gallery-item" onclick="openModal(3)">
+                    <a href="https://ibb.co.com/HLgbGCWX"><img src="https://i.ibb.co.com/sp3NsC0t/3.jpg" alt="3" style="width:100%;height:100%;object-fit:contain;"></a>
+                </div>
+                <div class="gallery-item" onclick="openModal(4)">
+                    <a href="https://ibb.co.com/Qjk9q7KG"><img src="https://i.ibb.co.com/R4N2MGDW/4.jpg" alt="4" style="width:100%;height:100%;object-fit:contain;"></a>
+                </div>
+                <div class="gallery-item" onclick="openModal(5)">
+                    <a href="https://ibb.co.com/Y7LNTQp6"><img src="https://i.ibb.co.com/LzZ0hRnM/5.jpg" alt="5" style="width:100%;height:100%;object-fit:contain;"></a>
+                </div>
+                <div class="gallery-item" onclick="openModal(6)">
+                    <a href="https://ibb.co.com/tPYXp4Nf"><img src="https://i.ibb.co.com/Dgwpft6X/6.jpg" alt="6" style="width:100%;height:100%;object-fit:contain;"></a>
+                </div>
+                <div class="gallery-item" onclick="openModal(7)">
+                    <a href="https://ibb.co.com/xQ0fzqR"><img src="https://i.ibb.co.com/03SFYyd/7.jpg" alt="7" style="width:100%;height:100%;object-fit:contain;"></a>
+                </div>
+                <div class="gallery-item" onclick="openModal(8)">
+                    <a href="https://ibb.co.com/21SzBRVG"><img src="https://i.ibb.co.com/5gkQVCpb/8.jpg" alt="8" style="width:100%;height:100%;object-fit:contain;"></a>
+                </div>
+                <div class="gallery-item" onclick="openModal(9)">
+                    <a href="https://ibb.co.com/4wkDdsV0"><img src="https://i.ibb.co.com/gbYXVvRc/9.jpg" alt="9" style="width:100%;height:100%;object-fit:contain;"></a>
+                </div>
+                <div class="gallery-item" onclick="openModal(10)">
+                    <a href="https://ibb.co.com/VpHrg8Ly"><img src="https://i.ibb.co.com/sJ5kKrgS/10.jpg" alt="10" style="width:100%;height:100%;object-fit:contain;"></a>
+                </div>
+                <div class="gallery-item" onclick="openModal(11)">
+                    <a href="https://ibb.co.com/yBcx2zXc"><img src="https://i.ibb.co.com/YTFVg53F/11.jpg" alt="11" style="width:100%;height:100%;object-fit:contain;"></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reasons Section -->
+    <section id="reasons" class="section">
+        <div class="reasons-container">
+            <h2 class="reasons-title">Alasan Kenapa Aku Sayang Kamu</h2>
+
+            <div class="reason-card">
+                <div class="reason-number">#1</div>
+                <div class="reason-text">Yang pertama nih, kamu itu kuat, pinter, sabar sekali, and kamu pengertian juga orangnya</div>
+            </div>
+
+            <div class="reason-card">
+                <div class="reason-number">#2</div>
+                <div class="reason-text">Kedua nih... kamu itu lucuu, lucuu pwolll, entah itu ngambekmu, tantrummu yang "SEMUANYA DIAAMM!!!"
+                    I can't imagine how funny is it ahahaha, apalagii cemburumuu, beuhh bikin ketawa terus ya... menurutku kamu cocok si yangg
+                    masuk stand up comedian
+                </div>
+            </div>
+
+            <div class="reason-card">
+                <div class="reason-number">#3</div>
+                <div class="reason-text">Nahh, yang ketiga nih, baru cantik, ga cuma cantik di fisik, tapi cantik di hati juga yekann
+                    dan itu poin pentingnya, bukan cantik fisikmu yang kucari, tapi cewe yang tahan banting aja wkwkwk
+                </div>
+            </div>
+
+            <div class="reason-card">
+                <div class="reason-number">#4</div>
+                <div class="reason-text">Aku suka gimana kamu selesaiin masalah, contohnya kaya kemarin, kamu nurunin gengsi buat ke tempat dudukku
+                    buat sekedar selesaiin masalah doang dan itu ga semua cewe bisa, but I finally found u and it's miracle!!
+                </div>
+            </div>
+
+            <div class="reason-card">
+                <div class="reason-number">#5</div>
+                <div class="reason-text">Kamu itu definisi rumah yang bukan rumah, entah kenapa, disampingmu itu bikin aku kaya aman aja,
+                    aman dalam arti, hati aku tu lega gitu, kaya plong, masalah-masalah ilang, ovt yang aku ovt in juga ilang, tapi
+                    sampe rumah tetep mbalik lagi sii wkwkwkwk but that's okayy, at least with u everything will be fine right?
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Message Section -->
+    <section id="message" class="section">
+        <div class="message-box">
+            <h2>Last for the last thing nih ❤️</h2>
+            <div class="message-text">
+                <p>Jujur, aku bersyukur banget akhirnya bisa dapetin kamu, meskipun sadarnya telat yaa, 
+                    kalo aku cepat sadarnya, mungkin aku udah mulai deketin kamu pas SMA kali? atau bahkan SMP?
+                    Tapi Tuhan punya rencana, kayanya Tuhan ngga ngasi kamu ke aku karna aku juga masih belum siap pada saat itu.
+                    So, setelah aku ngelewatin semua hal sendiri, aku lakuin kesalahan ini itu saat berhubungan, mungkin Tuhan berharap biar 
+                    aku ngga ngulangin kesalahanku, itu menurutku loh yaaa.
+                </p>
+
+                <p>I also wanna say thank uu, karna kamu masih nerima aku apa adanya sampe saat ini, detik ini, terimakasih sebanyak-banyaknya
+                    yaaa sayanggkuu for everything, ur so mean to me, ga bisa bayangin si kalo ga sama kamu, serusak apa aku ini. 
+                    Oiya btw taun lalu kamu juga dapet kaya gini kan?? taun ini dapet lagii dongg yekannn asikk. Aku juga minta maaf yaa kalo aku masih belum jadi apa2 until now
+                    but doain yaa sayanggkuu, aku juga minta maaff yaa kalo selama setahun ini banyak bikin kamu sedih, kesel yaaa, 
+                </p>
+
+                <p>Ini baru tahun pertama kita, dan aku berharap masih ada ribuan hari lagi yang akan kita lewatin
+                    bareng. Aku janji akan selalu berusaha jadi yang terbaik buat kamu.
+                </p>
+
+                <p>I love you more than words can say. Happy 1st Anniversary, Sayang! 💕</p>
+            </div>
+            <div class="signature">Dengan Cinta,<br>[Nama Kamu]</div>
+            <button class="btn-special" onclick="showSurprise()">Click untuk Surprise! 🎁</button>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div id="modal" class="modal" onclick="closeModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="modal-close" onclick="closeModal()">×</span>
+            <p style="color: #000; padding: 40px; font-size: 1.2em;">Ganti dengan foto asli ya! Upload foto ke imgur.com
+                atau hosting lain, terus ganti URL-nya di code.</p>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scroll
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Intersection Observer untuk animasi scroll
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.timeline-item, .reason-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Modal functions
+        function openModal(imageId) {
+            document.getElementById('modal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.remove('active');
+        }
+
+        // Surprise function
+        function showSurprise() {
+            const colors = ['❤️', '💕', '💖', '💗', '💓', '💝'];
+            const count = 50;
+
+            for (let i = 0; i < count; i++) {
+                setTimeout(() => {
+                    createParticle(colors[Math.floor(Math.random() * colors.length)]);
+                }, i * 50);
+            }
+
+            alert('I Love You So Much! ❤️\n\nMakasih udah jadi bagian terpenting dalam hidup aku. You mean the world to me! 💕');
+        }
+
+        function createParticle(emoji) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.textContent = emoji;
+            particle.style.left = Math.random() * window.innerWidth + 'px';
+            particle.style.top = window.innerHeight + 'px';
+            particle.style.fontSize = (Math.random() * 30 + 20) + 'px';
+            document.body.appendChild(particle);
+
+            const duration = Math.random() * 2000 + 2000;
+            const startTime = Date.now();
+
+            function animate() {
+                const elapsed = Date.now() - startTime;
+                const progress = elapsed / duration;
+
+                if (progress < 1) {
+                    particle.style.top = (window.innerHeight - progress * (window.innerHeight + 100)) + 'px';
+                    particle.style.left = (parseFloat(particle.style.left) + Math.sin(progress * 10) * 2) + 'px';
+                    particle.style.opacity = 1 - progress;
+                    requestAnimationFrame(animate);
+                } else {
+                    particle.remove();
+                }
+            }
+
+            animate();
+        }
+
+        // Floating hearts on page load
+        window.addEventListener('load', () => {
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    createParticle('❤️');
+                }, i * 200);
+            }
+        });
+    </script>
+</body>
+
+</html>
