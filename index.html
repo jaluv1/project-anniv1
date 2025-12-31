@@ -168,7 +168,8 @@
         .timeline-date {
             flex: 0 0 150px;
             font-size: 1.1em;
-            color: #ff90bc;
+            color: #1A4870;
+            font-weight: 800;
             font-weight: bold;
             padding: 20px;
         }
@@ -449,9 +450,21 @@
                 padding: 30px 15px;
             }
 
-            .timeline-item {
+            .timeline-date {
+                flex: none !important;
+                width: 100% !important;
+                padding: 0 0 10px 0 !important;
+                text-align: left !important;
+                font-size: 1.2em;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(even) {
                 flex-direction: column !important;
-                align-items: flex-start;
+                align-items: flex-start !important;
+                transform: none !important;
+                opacity: 1 !important;
+                margin-bottom: 40px;
             }
 
             .timeline-date {
@@ -462,8 +475,14 @@
             }
 
             .timeline-content {
-                padding: 20px;
-                width: 100%;
+                width: 100% !important;
+                flex: none !important;
+                box-sizing: border-box;
+            }
+
+            .timeline-content p {
+                word-wrap: break-word;
+                overflow-wrap: break-word;
             }
 
             .gallery-grid {
